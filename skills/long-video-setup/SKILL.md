@@ -1,6 +1,6 @@
 ---
 name: long-video-setup
-description: Start a new long video project. Checks that required tools are installed, runs a Q&A about the user's video workflow, and saves or reloads a named config. Use when the user wants to make a long video, start a video project, or says "long video", "zero to hero video", or asks to load or edit a saved video config. Always run this before long-video-story.
+description: Start a new long video project. Checks that required tools are installed, runs a Q&A about the user's video workflow, and saves or reloads a named config. Also continues an existing project from where it stopped. Use when the user wants to make a long video, start or continue a video project, or says "long video", "zero to hero video", or asks to load or edit a saved video config. Always run this before long-video-story.
 ---
 
 # Long video setup
@@ -15,6 +15,33 @@ Hand over to `long-video-story` when done.
 - Projects: `~/.long-video/projects/<project-slug>/project.json`
 
 On Windows `~` is the user profile folder. Create folders if missing.
+
+## Step 0: New project or continue one?
+
+If the user says "continue", "resume", or names an existing video, or if `~/.long-video/projects/` already holds projects and the request is unclear, ask: "Start a new video, or continue one?"
+
+To continue:
+
+1. List the folders in `~/.long-video/projects/` with each project's title and `stage` from its `project.json`.
+2. Ask which one. If there is only one, confirm it.
+3. Read its `stage` and hand over to the next skill:
+
+| `stage` value | Next skill |
+|---------------|------------|
+| `setup-done` | `long-video-story` |
+| `story-approved` | `long-video-assets` |
+| `assets-prompts-done`, `assets-images-done` | `long-video-director` (if the images are not finished, offer to finish `long-video-assets` first) |
+| `script-approved` | `long-video-keyframes` |
+| `frames-prompts-done`, `frames-images-done` | `long-video-clips` |
+| `clips-prompts-done`, `clips-done`, `clips-skipped` | `long-video-voice` |
+| `voice-prompts-done`, `voice-done`, `voice-skipped` | `long-video-sound` |
+| `sound-done`, `sound-skipped` | `long-video-render` |
+| `final-rendered`, `publish-ready` | `long-video-publish` (or review the finished files) |
+| any other value | Look at which files exist in the folder and ask the user where they stopped |
+
+4. Tell the user in one line where the project stands and what the next stage is. If a stage finished only its prompts (a `...-prompts-done` value), say that the images, clips or audio may still be missing and offer to check the folder.
+
+To start a new project, go on to Step 1.
 
 ## Step 1: Check requirements
 
