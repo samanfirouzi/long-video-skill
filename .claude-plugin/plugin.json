@@ -1,0 +1,18 @@
+{
+  "name": "long-video",
+  "version": "0.1.0",
+  "description": "Zero-to-hero long video generator. Guided workflow from requirements check and Q&A, through an approved story, to a finished video.",
+  "license": "Apache-2.0",
+  "keywords": [
+    "video",
+    "youtube",
+    "storytelling",
+    "automation",
+    "skills"
+  ],
+  "homepage": "https://github.com/samanfirouzi/long-video-skill",
+  "repository": "https://github.com/samanfirouzi/long-video-skill",
+  "author": {
+    "name": "samanfirouzi"
+  }
+}

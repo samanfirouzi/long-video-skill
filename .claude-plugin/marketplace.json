@@ -1,0 +1,15 @@
+{
+  "name": "long-video",
+  "owner": {
+    "name": "samanfirouzi"
+  },
+  "description": "Zero-to-hero long video generator: story, characters, script, images, clips, voice, sound, render and YouTube packaging.",
+  "plugins": [
+    {
+      "name": "long-video",
+      "source": "./",
+      "description": "Guided workflow from idea to finished YouTube video, with 12 skills. Say \"make a long video\" to start.",
+      "version": "0.1.0"
+    }
+  ]
+}
